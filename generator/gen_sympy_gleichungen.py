@@ -157,7 +157,8 @@ t('Bestimme die Werte, die nicht zur Definitionsmenge von `5/(x² − 9) = 1` ge
   body='display(solve(x**2 - 9, x))\nsolve(Eq(5 / (x**2 - 9), 1), x)')
 t('''Ein Schüler multipliziert `x²/(x − 3) = 9/(x − 3)` mit `(x − 3)` und löst `x² = 9`. Gib seine Lösungen aus und darunter die richtigen.''',
   body='display(solve(Eq(x**2, 9), x))\nsolve(Eq(x**2 / (x - 3), 9 / (x - 3)), x)')
-t('''**Arbeit:** Ein Rohr füllt ein Becken in 6 Stunden, ein zweites in 3 Stunden. Wie lange dauert es mit beiden? Löse `1/6 + 1/3 = 1/x`.''',
+t('''**Arbeit:** Ein Rohr füllt ein Becken in 6 Stunden, ein zweites in 3 Stunden. Wie lange dauert es mit beiden? Löse `1/6 + 1/3 = 1/x`.
+Schreibe die Brüche mit `Rational`, sonst rechnet Python `1/6` als Kommazahl und das Ergebnis wird `2.0`.''',
   body='solve(Eq(Rational(1, 6) + Rational(1, 3), 1 / x), x)')
 
 # ---------------------------------------------------------------- 4

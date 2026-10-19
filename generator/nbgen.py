@@ -14,6 +14,7 @@ import contextlib
 import io
 import json
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -155,6 +156,8 @@ def _check():
             if it['given'] and not it['solution'].startswith(it['given']):
                 print('GIVEN MISMATCH', it['nr']); problems += 1
             it['out'] = out
+            if aktuelle_sprache == 'sympy' and it['kind'] == 'normal':
+                it['zahlen_noetig'] = zahlen_noetig(it, ausf)
             print(f'--- {it["nr"]} ({it["kind"]})\n{out}', end='')
             for b in it['bilder']:
                 print(f'[Bild, {len(b) // 1024} KB]')
@@ -175,12 +178,50 @@ def bild_name(it, k):
     return f'aufgabe-{it["nr"]}-{k}.png'
 
 
+RATIONAL_HINWEIS = '''**Brüche und Kommazahlen:** Python rechnet `1/6` oder `0.5` sofort als Kommazahl, bevor sympy die Zahl sieht.
+Die erwarteten Ausgaben sind aber mit exakten Brüchen berechnet. Schreibe solche Zahlen deshalb mit `Rational`: `Rational(1, 6)` für 1/6,
+`Rational('0.5')` für 0,5. Bei einer Division ganzer Zahlen genügt es, eine davon mit `Integer` zu schreiben: `Integer(1) / 6`.
+Aufgaben, bei denen das nötig ist, haben einen entsprechenden Hinweis.'''
+
+
+KOMMAZAHLEN = [(re.compile(r"Rational\((-?\d+), (\d+)\)"), r"(\1/\2)"),
+               (re.compile(r"Rational\('(-?[\d.]+)'\)"), r"\1"),
+               (re.compile(r"Integer\((-?\d+)\)"), r"\1")]
+
+
+def zahlen_noetig(it, ausf):
+    """sympy: Kommt ohne Rational/Integer (also mit Python-Kommazahlen) eine andere Ausgabe heraus?"""
+    rest = it['solution'][len(it['given']):]  # was der Schüler selbst schreibt
+    naiv = rest
+    for muster, ersatz in KOMMAZAHLEN:
+        naiv = muster.sub(ersatz, naiv)
+    if naiv == rest:
+        return False
+    with contextlib.redirect_stdout(io.StringIO()):
+        out, err, bilder = ausf(it['given'] + naiv)
+    return err is not None or out != it['out']
+
+
+def zahlen_hinweis(it):
+    """sympy: Hinweis, wenn die Musterlösung Rational/Integer braucht, der Aufgabentext es aber nicht sagt."""
+    rest = it['solution'][len(it['given']):]
+    if not it.get('zahlen_noetig') or re.search(r'Rational|Integer', it['text']):
+        return ''
+    if 'Rational(' in rest:
+        return "\n\n*Schreibe Brüche und Kommazahlen mit `Rational`, z. B. `Rational(1, 6)` oder `Rational('0.5')`.*"
+    if 'Integer(' in rest:
+        return '\n\n*Schreibe bei der Division ganzer Zahlen eine davon mit `Integer`, z. B. `Integer(1) / 6`.*'
+    return ''
+
+
 def task_md(it):
     text = f'#### Aufgabe {it["nr"]}\n\n'
     if it['kind'] == 'predict':
         text += it['text'] + f'\n```{SPRACHEN[aktuelle_sprache]["codeblock"]}\n{it["given"]}\n```'
     else:
         text += it['text']
+        if aktuelle_sprache == 'sympy':
+            text += zahlen_hinweis(it)
         if it['kind'] == 'normal' and aktuelle_sprache != 'python':
             text += '\n\n**Erwartete Ausgabe:**\n\n' + it['out'].rstrip()
             for k in range(len(it['bilder'])):  # Diagramme (z. B. sympy.plot) als Anhang
@@ -216,6 +257,8 @@ Bei den Aufgaben „Was wird ausgegeben?“ gibt es keine Lösung zum Aufklappen
 
 def build(titel, intro, loesung, aufklappbar):
     cells = []
+    if aktuelle_sprache == 'sympy':
+        intro = intro + '\n\n' + RATIONAL_HINWEIS
     if loesung:
         cells.append(md(f'### {titel} - Lösungen'))
     elif aufklappbar:
