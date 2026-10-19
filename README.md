@@ -48,6 +48,7 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 | Bogenlänge und Krümmung | [sympy_dmw_kruemmung.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_kruemmung.ipynb) |
 | Flächen im Raum, partielle Ableitungen und Gradient | [sympy_dmw_flaechen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_flaechen.ipynb) |
 | Taylorpolynome und Taylorreihen | [sympy_dmw_taylor.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_taylor.ipynb) |
+| Differentialgleichungen, Richtungsfelder und Euler-Verfahren | [sympy_dmw_dgl.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_dgl.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
