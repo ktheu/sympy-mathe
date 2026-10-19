@@ -4,6 +4,8 @@
 passend zum Bildungsplan Mathematik des Gymnasiums in Baden-Württemberg. Die Notebooks laufen direkt im Browser mit
 [JupyterLite](https://jupyterlite.readthedocs.io/), ohne Installation und ohne Anmeldung.
 
+### Bis Klasse 10
+
 | Thema | Notebook öffnen |
 |---|---|
 | Zahlen exakt: Brüche, Primzahlen, Potenzen und Wurzeln | [sympy_zahlen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_zahlen.ipynb) |
@@ -13,6 +15,14 @@ passend zum Bildungsplan Mathematik des Gymnasiums in Baden-Württemberg. Die No
 | Ableitungen: Änderungsrate, Tangente, Extrem- und Wendepunkte | [sympy_ableitungen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_ableitungen.ipynb) |
 | Geometrie: Pythagoras, Trigonometrie, Körper, Vektoren und Geraden | [sympy_geometrie.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_geometrie.ipynb) |
 | Wahrscheinlichkeit: Laplace, Pfadregeln, Vierfeldertafel, Binomialverteilung | [sympy_wahrscheinlichkeit.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_wahrscheinlichkeit.ipynb) |
+
+### Kursstufe
+
+Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
+
+| Thema | Notebook öffnen |
+|---|---|
+| Ableitungsregeln: e-Funktion, Produkt-, Ketten- und Quotientenregel | [sympy_ableitungsregeln.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_ableitungsregeln.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
