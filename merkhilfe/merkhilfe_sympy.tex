@@ -1,0 +1,308 @@
+% Merkhilfe zu den Notebooks „Mathematik mit sympy“ (https://ktheu.github.io/sympy-mathe/)
+% Übersetzen:  latexmk -pdf merkhilfe_sympy.tex   (oder zweimal pdflatex)
+% Nur Aufrufe als Erinnerung, keine Erklärungen. Reihenfolge wie die Notebooks; jeder Aufruf steht beim ersten Vorkommen.
+\documentclass[9pt,a4paper,landscape]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[varqu,varl]{zi4}
+\usepackage[ngerman]{babel}
+\usepackage[margin=8mm,top=7mm,bottom=9mm]{geometry}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{amsmath,amssymb}
+
+\definecolor{blau}{RGB}{0,84,159}
+\definecolor{grau}{RGB}{105,105,105}
+
+\lstset{basicstyle=\ttfamily\small, columns=fullflexible, keepspaces=true, upquote=true}
+\setlength{\columnsep}{6mm}
+\setlength{\columnseprule}{0.3pt}
+\raggedcolumns
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+% \gruppe{Titel}: Notebook-Gruppe, \nb{Nr. Titel}{Datei}: Notebook, \st{Stichwort}: rechts neben dem Aufruf
+\newcommand{\gruppe}[1]{\par\medskip\colorbox{blau}{\parbox{\dimexpr\columnwidth-2\fboxsep}{\color{white}\bfseries\normalsize #1}}\par\smallskip}
+\newcommand{\nb}[2]{\par\smallskip{\color{blau}\bfseries #1\hfill\mdseries\scriptsize\ttfamily #2}\par\vspace{0.5pt}{\color{blau}\hrule height 0.6pt}\vspace{2pt}}
+\newcommand{\st}[1]{\hfill{\footnotesize\color{grau}#1}\par}
+\newcommand{\zl}{\par\vspace{1pt}}
+
+\begin{document}
+\begin{multicols*}{3}
+{\color{blau}\bfseries\Large Merkhilfe sympy}\hfill{\footnotesize\color{grau}ktheu.github.io/sympy-mathe}\par
+\vspace{2pt}{\color{blau}\hrule height 1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{Start}{}
+\lstinline!from sympy import *!\zl
+\lstinline!init_printing()!\st{Formelausgabe}
+\lstinline!x, y = symbols('x y')!\zl
+\lstinline!symbols('x', real=True)!\st{auch positive, integer}
+\lstinline!display(a, b)!\st{mehrere Ausgaben}
+\lstinline!N(w)!\quad\lstinline!N(w, 5)!\quad\lstinline!w.evalf(10)!\st{Dezimalzahl}
+\lstinline!pi!\quad\lstinline!E!\quad\lstinline!I!\quad\lstinline!oo!\st{$\pi$, $e$, $i$, $\infty$}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\gruppe{Bis Klasse 10}
+\nb{1 Zahlen exakt}{sympy\_zahlen}
+\lstinline!Rational(1, 3)!\quad\lstinline!Rational('0.25')!\st{Bruch}
+\lstinline!Integer(1) / 3!\st{statt 1/3}
+\lstinline!isprime(n)!\quad\lstinline!factorint(n)!\st{Primfaktoren}
+\lstinline!primefactors(n)!\quad\lstinline!divisors(n)!\zl
+\lstinline!divisor_count(n)!\quad\lstinline!prime(k)!\zl
+\lstinline!nextprime(n)!\quad\lstinline!primerange(a, b)!\zl
+\lstinline!gcd(a, b)!\quad\lstinline!lcm(a, b)!\st{ggT, kgV}
+\lstinline!sqrt(8)!\quad\lstinline!root(x, 3)!\st{Wurzeln}
+\lstinline!radsimp(1/sqrt(2))!\st{Nenner rational}
+\lstinline!nsimplify(0.75)!\st{Dezimal $\to$ Bruch}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{2 Terme}{sympy\_terme}
+\lstinline!t.subs(x, 2)!\quad\lstinline!t.subs({x: 1, y: 2})!\zl
+\lstinline!expand(t)!\quad\lstinline!factor(t)!\zl
+\lstinline!collect(t, x)!\quad\lstinline!simplify(t)!\zl
+\lstinline!cancel(t)!\quad\lstinline!together(t)!\st{Bruchterme}
+\lstinline!fraction(t)!\quad\lstinline!denom(t)!\st{Zähler, Nenner}
+\lstinline!powsimp(t)!\quad\lstinline!expand_power_base(t)!\zl
+\lstinline!binomial(n, k)!\st{$\binom nk$}
+\lstinline!Eq(links, rechts)!\st{Gleichung}
+\lstinline!simplify(a - b) == 0!\st{gleichwertig?}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{3 Gleichungen}{sympy\_gleichungen}
+\lstinline!solve(Eq(l, r), x)!\st{Liste}
+\lstinline!solve([g1, g2], [x, y])!\st{Dictionary}
+\lstinline!solveset(g, x, S.Reals)!\st{Menge}
+\lstinline!solveset(g, x, domain=Interval(0, 2*pi))!\zl
+\lstinline!Interval(a, b)!\quad\lstinline!Interval.open(a, b)!\zl
+\lstinline!Interval.Ropen(a, b)!\st{$[a;b[$}
+\lstinline!linsolve([g1, g2], [x, y])!\st{LGS}
+\lstinline!nsolve(g, x, 1.5)!\st{numerisch}
+\lstinline!log(x)!\quad\lstinline!log(x, 2)!\st{ln, $\log_2$}
+\lstinline!ceiling(w)!\quad\lstinline!floor(w)!\st{auf-, abrunden}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{4 Funktionen}{sympy\_funktionen}
+\lstinline!f = x**2 - 1!\quad\lstinline!f.subs(x, 3)!\zl
+\lstinline!plot(f, g, (x, -3, 3), ylim=(-2, 5),!\par
+\quad\lstinline!legend=True, title='...');!\zl
+\lstinline!maximum(f, x, Interval(a, b))!\quad\lstinline!minimum!\zl
+\lstinline!from sympy.calculus.util import function_range!\zl
+\lstinline!function_range(f, x, S.Reals)!\st{Wertemenge}
+\lstinline!continuous_domain(f, x, S.Reals)!\zl
+\lstinline!limit(f, x, oo)!\quad\lstinline!limit(f, x, 0, '+')!\zl
+\lstinline!degree(p, x)!\quad\lstinline!roots(p, x)!\st{mit Vielfachheit}
+\lstinline!sin!\quad\lstinline!cos!\quad\lstinline!tan!\quad\lstinline!periodicity(f, x)!\zl
+\lstinline!rad(60)!\quad\lstinline!deg(pi/3)!\st{Grad $\leftrightarrow$ Bogenmaß}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{5 Ableitungen}{sympy\_ableitungen}
+\lstinline!diff(f, x)!\quad\lstinline!diff(f, x, 2)!\zl
+\lstinline!limit((f.subs(x, x0 + h) - f.subs(x, x0)) / h, h, 0)!\zl
+\lstinline!is_increasing(f, Interval(a, b))!\quad\lstinline!is_decreasing!\zl
+\lstinline!Abs(w)!\quad\lstinline!atan(m)!\st{Steigungswinkel}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{6 Geometrie}{sympy\_geometrie}
+\lstinline!asin!\quad\lstinline!acos!\quad\lstinline!atan!\quad\lstinline!trigsimp(t)!\zl
+\lstinline!Point(0, 0)!\quad\lstinline!Segment(A, B)!\quad\lstinline!Line(A, B)!\zl
+\lstinline!Circle(M, r)!\quad\lstinline!Triangle(A, B, C)!\zl
+\lstinline!intersection(g, h)!\quad\lstinline!A.distance(B)!\zl
+\lstinline!T.area!\quad\lstinline!T.angles!\quad\lstinline!T.centroid!\zl
+\lstinline!T.circumcenter!\quad\lstinline!T.circumradius!\quad\lstinline!T.incenter!\zl
+\lstinline!Segment(A, B).midpoint!\zl
+\lstinline!v = Matrix([1, 2, 3])!\st{Vektor}
+\lstinline!v.norm()!\quad\lstinline!v.cross(w)!\st{Länge, Kreuzprodukt}
+\lstinline!Point3D(1, 2, 3)!\quad\lstinline!Line3D(P, Q)!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{7 Wahrscheinlichkeit}{sympy\_wahrscheinlichkeit}
+\lstinline!FiniteSet(1, 2, 3)!\quad\lstinline!A | B!\quad\lstinline!A & B!\zl
+\lstinline!Complement(Omega, A)!\quad\lstinline!ProductSet(W, W)!\zl
+\lstinline!factorial(n)!\quad\lstinline!ff(n, k)!\quad\lstinline!binomial(n, k)!\zl
+\lstinline!from sympy.stats import *!\st{E, P neu belegt}
+\lstinline!Die('X', 6)!\quad\lstinline!FiniteRV('X', {0: p, 5: q})!\zl
+\lstinline!Binomial('X', n, p)!\zl
+\lstinline!P(X > 4)!\quad\lstinline!P(Eq(X, 2))!\quad\lstinline!P(X <= 3)!\zl
+\lstinline!E(X)!\quad\lstinline!variance(X)!\quad\lstinline!std(X)!\zl
+\lstinline!density(X).dict!\st{Verteilung}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\gruppe{Kursstufe}
+\nb{8 Ableitungsregeln}{sympy\_ableitungsregeln}
+\lstinline!exp(x)!\quad\lstinline!log(x)!\st{$e^x$, $\ln x$}
+\lstinline!expand_log(t, force=True)!\zl
+\lstinline!logcombine(t, force=True)!\zl
+\lstinline!limit(f, x, 2, '+-')!\st{beidseitig}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{9 Funktionsanalyse}{sympy\_funktionsanalyse}
+\lstinline!a = symbols('a', positive=True)!\st{Schar}
+\lstinline!l = solve([g1, g2, g3], [a, b, c])!\quad\lstinline!f.subs(l)!\zl
+\lstinline!solve(..., dict=True)!\zl
+\lstinline!plot(*[f.subs(a, w) for w in [1, 2, 3]], (x, 0, 5));!\zl
+\lstinline!plot(..., aspect_ratio=(1, 1), xlim=(a, b))!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{10 Integrale}{sympy\_integrale}
+\lstinline!integrate(f, x)!\st{Stammfunktion}
+\lstinline!integrate(f, (x, a, b))!\quad\lstinline!(x, 0, oo)!\zl
+\lstinline!Integral(f, (x, a, b))!\quad\lstinline!.doit()!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{11 Wachstum}{sympy\_wachstum}
+\lstinline!f = Function('f')!\zl
+\lstinline!dgl = Eq(f(t).diff(t), k * f(t))!\zl
+\lstinline!l = dsolve(dgl, f(t), ics={f(0): 100})!\quad\lstinline!l.rhs!\zl
+\lstinline!checkodesol(dgl, l)!\st{(True, 0)}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{12 Ebenen}{sympy\_ebenen}
+\lstinline!u.dot(v)!\st{Skalarprodukt}
+\lstinline!M = Matrix([[1, 1, 1, 6], [2, -1, 1, 3]])!\zl
+\lstinline!M.rref()[0]!\quad\lstinline!M.det()!\quad\lstinline!linsolve(M, [x, y, z])!\zl
+\lstinline!M.row(1)!\quad\lstinline!M[1, :] = M.row(1) - 2 * M.row(0)!\zl
+\lstinline!E = Plane(Point3D(1, 0, 2), normal_vector=(1, -1, 1))!\zl
+\lstinline!Plane(A, B, C)!\quad\lstinline!E.equation(x, y, z)!\zl
+\lstinline!E.intersection(g)!\st{Gerade, Ebene}
+\lstinline!from sympy.plotting import plot3d!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{13 Abstände und Winkel}{sympy\_abstaende\_winkel}
+\lstinline!deg(acos(u.dot(v) / (u.norm() * v.norm())))!\zl
+\lstinline!E.distance(P)!\quad\lstinline!E.projection(P)!\st{Lotfußpunkt}
+\lstinline!E.angle_between(F)!\zl
+\lstinline!Line3D(P, direction_ratio=(1, 2, 2))!\zl
+\lstinline!g.distance(h)!\st{auch windschief}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{14 Hypothesentest}{sympy\_hypothesentest}
+\lstinline!F = cdf(Binomial('X', n, p))!\st{F[k] $=P(X\le k)$}
+\lstinline!1 - F[k - 1]!\st{$P(X\ge k)$}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{15 Normalverteilung}{sympy\_normalverteilung}
+\lstinline!X = Normal('X', mu, sigma)!\zl
+\lstinline!P((X >= a) & (X <= b))!\zl
+\lstinline!density(X)(x)!\quad\lstinline!cdf(X)(x)!\zl
+\lstinline!quantile(X)(Rational(9, 10))!\zl
+\lstinline!fl = lambdify(x, f)!\st{für matplotlib}
+\end{minipage}\par\vspace{1pt}
+
+\end{multicols*}
+\newpage
+\begin{multicols}{3}
+{\color{blau}\bfseries\Large Merkhilfe sympy}\hfill{\footnotesize\color{grau}Seite 2}\par
+\vspace{2pt}{\color{blau}\hrule height 1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\gruppe{Vertiefungskurs}
+\nb{16 Logik und Beweise}{sympy\_logik\_beweise}
+\lstinline!from sympy.logic.boolalg import truth_table!\zl
+\lstinline!A & B!\quad\lstinline!A | B!\quad\lstinline!~A!\quad\lstinline!Xor(A, B)!\zl
+\lstinline!Implies(A, B)!\quad\lstinline!Equivalent(A, B)!\zl
+\lstinline!truth_table(e, [A, B])!\quad\lstinline!simplify_logic(e)!\zl
+\lstinline!satisfiable(e)!\zl
+\lstinline!summation(k**2, (k, 1, n))!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{17 Folgen und Reihen}{sympy\_folgen\_reihen}
+\lstinline!sequence(1/n, (n, 1, oo))[:5]!\zl
+\lstinline!rsolve(f(n + 1) - 2*f(n), f(n), {f(1): 3})!\zl
+\lstinline!limit(a, n, oo)!\quad\lstinline!fibonacci(n)!\zl
+\lstinline!summation(q**k, (k, 0, oo))!\zl
+\lstinline!Sum(1/k**2, (k, 1, oo)).is_convergent()!\zl
+\lstinline!apart(t, k)!\st{Partialbrüche}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{18 Komplexe Zahlen}{sympy\_komplexe\_zahlen}
+\lstinline!z = 3 + 4*I!\quad\lstinline!expand(z1 * z2)!\zl
+\lstinline!re(z)!\quad\lstinline!im(z)!\quad\lstinline!conjugate(z)!\zl
+\lstinline!Abs(z)!\quad\lstinline!arg(z)!\zl
+\lstinline!expand_complex(2 * exp(I * pi / 3))!\zl
+\lstinline!factor(p, extension=I)!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{19 Integrationstechniken}{sympy\_integrationstechniken}
+\lstinline!integrate(u, u).subs(u, g)!\st{Substitution}
+\lstinline!solve(..., simplify=False)!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\gruppe{Wahlfach Digitale Mathematische Werkzeuge}
+\nb{20 Gleichungen, Kurven}{sympy\_dmw\_gleichungen}
+\lstinline!real_roots(p)!\quad\lstinline!count_roots(p)!\zl
+\lstinline!discriminant(p, x)!\quad\lstinline!real_root(-8, 3)!\zl
+\lstinline!N(w, 5, chop=True)!\st{ohne Rest-$i$}
+\lstinline!Poly(p, x).degree()!\zl
+\lstinline!kurve(Eq(x**2 + y**2, 1), xb=(-2, 2), yb=(-2, 2))!\st{Setup}
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{21 Krümmung}{sympy\_dmw\_kruemmung}
+\lstinline!plot_parametric(cos(t), sin(t), (t, 0, 2*pi))!\zl
+\lstinline!p = plot(f, (x, a, b), show=False)!\zl
+\lstinline!p.extend(q)!\quad\lstinline!p.show()!\zl
+\lstinline!Circle(P1, P2, P3)!\zl
+\lstinline!nsolve(t, a, (0, 1), solver='bisect')!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{22 Flächen im Raum}{sympy\_dmw\_flaechen}
+\lstinline!from sympy.plotting import plot3d, plot_contour!\zl
+\lstinline!plot3d(f, (x, -2, 2), (y, -2, 2))!\zl
+\lstinline!plot_contour(f, (x, -2, 2), (y, -2, 2))!\zl
+\lstinline!diff(f, x, y)!\quad\lstinline!hessian(f, (x, y))!\zl
+\lstinline!Matrix([diff(f, x), diff(f, y)])!\st{Gradient}
+\lstinline!atan2(y, x)!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{23 Taylor}{sympy\_dmw\_taylor}
+\lstinline!series(f, x, 0, 5)!\quad\lstinline!.removeO()!\zl
+\lstinline!series(f, x, a, 4)!\st{um $x = a$}
+\lstinline!Piecewise((exp(-1/x), x > 0), (0, True))!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\nb{24 Differentialgleichungen}{sympy\_dmw\_dgl}
+\lstinline!richtungsfeld(x - y, xb=(-3, 3), yb=(-3, 3))!\st{Setup}
+\lstinline!dsolve(dgl(x * y), Y(x), ics={Y(0): 1})!\st{Setup}
+\lstinline!ics={Y(0): 1, Y(x).diff(x).subs(x, 0): 0}!\zl
+\lstinline!f = lambdify((x, y), x - y)!\zl
+\end{minipage}\par\vspace{1pt}
+
+\noindent\begin{minipage}{\columnwidth}
+\gruppe{Zeichnen mit matplotlib}
+\lstinline!import matplotlib.pyplot as plt!\zl
+\lstinline!plt.plot(xs, ys, 'o-')!\quad\lstinline!plt.bar(xs, ys)!\zl
+\lstinline!plt.step(xs, ys, where='post')!\zl
+\lstinline!plt.fill_between(xs, ys, alpha=0.4)!\zl
+\lstinline!plt.quiver(xs, ys, us, vs)!\zl
+\lstinline!plt.axhline(0)!\quad\lstinline!plt.axvline(0)!\zl
+\lstinline!plt.gca().set_aspect('equal')!\zl
+\lstinline!plt.xlabel('x')!\quad\lstinline!plt.legend()!\quad\lstinline!plt.show()!\zl
+\end{minipage}\par\vspace{1pt}
+
+\end{multicols}
+\end{document}

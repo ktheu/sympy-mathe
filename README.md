@@ -50,6 +50,8 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 | Taylorpolynome und Taylorreihen | [sympy_dmw_taylor.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_taylor.ipynb) |
 | Differentialgleichungen, Richtungsfelder und Euler-Verfahren | [sympy_dmw_dgl.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_dgl.ipynb) |
 
+**Merkhilfe** mit allen sympy-Aufrufen der Notebooks (2 Seiten zum Ausdrucken): [merkhilfe_sympy.pdf](https://github.com/ktheu/sympy-mathe/blob/main/merkhilfe/merkhilfe_sympy.pdf)
+
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
 Python-Grundlagen (Listen, Funktionen, numpy, matplotlib, ...): [Python-Übungen](https://ktheu.github.io/python-uebungen/)
