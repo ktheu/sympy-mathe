@@ -60,8 +60,3 @@ Python-Grundlagen (Listen, Funktionen, numpy, matplotlib, ...): [Python-Übungen
 - Deine Änderungen werden **im Browser** gespeichert. Auf einem anderen Gerät oder nach dem Löschen der Browserdaten sind sie weg.
   Wer seine Lösungen behalten will, lädt das Notebook herunter (*File → Download*).
 - Unter jeder Aufgabe kann man die Lösung aufklappen. Erst selbst probieren!
-
-## Für Lehrkräfte
-
-Die Notebooks in `content/` werden von den Skripten in `generator/` erzeugt (`generator/nbgen.py`, ein Skript pro Notebook).
-Dabei wird jede Musterlösung ausgeführt; die erwarteten Ausgaben stammen aus diesen Läufen.
