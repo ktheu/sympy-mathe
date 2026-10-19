@@ -28,6 +28,7 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 | Wachstum: exponentiell, beschränkt, logistisch, Differentialgleichungen | [sympy_wachstum.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_wachstum.ipynb) |
 | Ebenen: LGS, Skalarprodukt, Ebenengleichungen, Lagebeziehungen | [sympy_ebenen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_ebenen.ipynb) |
 | Abstände und Winkel im Raum, Spiegelungen, Flächen und Volumen | [sympy_abstaende_winkel.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_abstaende_winkel.ipynb) |
+| Hypothesentests: Ablehnungsbereich, ein- und zweiseitig, Fehler 1. und 2. Art | [sympy_hypothesentest.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_hypothesentest.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
