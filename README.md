@@ -46,6 +46,7 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 |---|---|
 | Kubische Gleichungen, komplexe Zahlen und algebraische Kurven | [sympy_dmw_gleichungen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_gleichungen.ipynb) |
 | Bogenlänge und Krümmung | [sympy_dmw_kruemmung.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_kruemmung.ipynb) |
+| Flächen im Raum, partielle Ableitungen und Gradient | [sympy_dmw_flaechen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_flaechen.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
