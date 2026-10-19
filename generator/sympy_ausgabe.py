@@ -54,7 +54,7 @@ def ausfuehren(code, namensraum):
     Endet der Code mit ';', wird der Wert des letzten Ausdrucks nicht ausgegeben (wie in Jupyter)."""
     teile = []
     plt = None
-    if 'plot' in code or 'matplotlib' in code:
+    if 'plot' in code or 'matplotlib' in code or 'plt.' in code:
         import matplotlib
         matplotlib.use('Agg')
         import matplotlib.pyplot as plt

@@ -12,6 +12,7 @@ passend zum Bildungsplan Mathematik des Gymnasiums in Baden-Württemberg. Die No
 | Funktionen: Graphen, Nullstellen, Scheitel, Wachstum, Sinus | [sympy_funktionen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_funktionen.ipynb) |
 | Ableitungen: Änderungsrate, Tangente, Extrem- und Wendepunkte | [sympy_ableitungen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_ableitungen.ipynb) |
 | Geometrie: Pythagoras, Trigonometrie, Körper, Vektoren und Geraden | [sympy_geometrie.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_geometrie.ipynb) |
+| Wahrscheinlichkeit: Laplace, Pfadregeln, Vierfeldertafel, Binomialverteilung | [sympy_wahrscheinlichkeit.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_wahrscheinlichkeit.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
