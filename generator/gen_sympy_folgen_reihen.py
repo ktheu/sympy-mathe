@@ -5,7 +5,7 @@
 #
 # Vertiefungskurs Mathematik BW: Folgen (explizit, rekursiv, arithmetisch, geometrisch), Monotonie und Beschränktheit,
 # Grenzwert und Konvergenz (ε-Definition), Reihen (Partialsummen, geometrische Reihe, harmonische Reihe, Teleskopsummen),
-# Taylorpolynome (Zusatz). sympy 1.14: limit mit (-1)**n bricht ab (NotImplementedError) → alternierende Folgen über |a_n| behandeln.
+# (Taylorpolynome stehen in sympy_dmw_taylor.) sympy 1.14: limit mit (-1)**n bricht ab (NotImplementedError) → alternierende Folgen über |a_n| behandeln.
 from nbgen import sec, expl, task, predict, generate, setup
 from sympy_ausgabe import sympy_ausfuehrung
 
@@ -19,8 +19,7 @@ SETUP = ("from sympy import *\ninit_printing()\nimport matplotlib.pyplot as plt\
          "n, k = symbols('n k', integer=True, positive=True)\nx = symbols('x', real=True)\nf = Function('f')")
 
 INTRO = '''In diesem Notebook (Vertiefungskurs) geht es um **Folgen und Reihen**: explizite und rekursive Folgen, Monotonie und Beschränktheit,
-**Grenzwerte** und die genaue Definition der **Konvergenz**, unendliche **Reihen** wie die geometrische und die harmonische Reihe
-und (als Zusatz) **Taylorpolynome**, mit denen man Funktionen durch Polynome annähert.
+**Grenzwerte** und die genaue Definition der **Konvergenz** und unendliche **Reihen** wie die geometrische und die harmonische Reihe.
 
 Vorausgesetzt werden die Notebooks *Logik und Beweise* (Summen, Induktion) und *Ableitungsregeln* (`limit`).
 
@@ -207,28 +206,6 @@ display(summation(k, (k, 1, 10)))
 summation(Rational(1, 2)**k, (k, 1, oo))""")
 
 # ---------------------------------------------------------------- 6
-sec('Taylorpolynome (Zusatz)')
-expl('''#### Funktionen durch Polynome annähern
-
-Das **Taylorpolynom** vom Grad m einer Funktion an der Stelle 0 hat dieselben Ableitungen bis zur Ordnung m wie die Funktion:
-T(x) = f(0) + f'(0)·x + f''(0)/2!·x² + ... + f⁽ᵐ⁾(0)/m!·xᵐ.
-
-`series(f, x, 0, m + 1)` gibt die Entwicklung bis xᵐ und den Rest O(xᵐ⁺¹), `.removeO()` entfernt den Rest.''',
-     """display(series(exp(x), x, 0, 5))
-T = series(sin(x), x, 0, 8).removeO()
-display(T)
-plot(sin(x), T, (x, -5, 5), ylim=(-2, 2), legend=True);""")
-
-t('Gib das Taylorpolynom 4. Grades von cos(x) an der Stelle 0 aus.', body='series(cos(x), x, 0, 5).removeO()')
-t('Gib das Taylorpolynom 4. Grades von ln(1 + x) an der Stelle 0 aus.', body='series(log(1 + x), x, 0, 5).removeO()')
-t('''Berechne das Taylorpolynom 3. Grades von eˣ von Hand mit der Formel (Summe f⁽ʲ⁾(0)/j! · xʲ) und vergleiche mit `series`.''',
-  body='T = sum([diff(exp(x), x, j).subs(x, 0) / factorial(j) * x**j for j in range(4)])\ndisplay(T)\nT == series(exp(x), x, 0, 4).removeO()')
-t('''Wie gut nähert das Taylorpolynom 6. Grades von eˣ die Zahl e an? Setze x = 1 ein und gib den Fehler e − T(1) mit 3 Ziffern aus.''',
-  body='T = series(exp(x), x, 0, 7).removeO()\ndisplay(T.subs(x, 1))\nN(E - T.subs(x, 1), 3)')
-t('''Zeichne cos(x) und seine Taylorpolynome vom Grad 2, 4 und 6 für −5 ≤ x ≤ 5 (y von −2 bis 2, mit Legende).''',
-  body='plot(cos(x), *[series(cos(x), x, 0, m + 1).removeO() for m in [2, 4, 6]], (x, -5, 5), ylim=(-2, 2), legend=True);')
-
-# ---------------------------------------------------------------- 7
 sec('Gemischte Übungen')
 t('''**Zinseszins:** 1000 € werden mit 4 % pro Jahr verzinst. Gib das Kapital nach 25 Jahren (auf Cent gerundet) und die Formel für das Kapital nach n Jahren aus (geometrische Folge).''',
   body='Kn = 1000 * Rational(104, 100)**n\ndisplay(round(N(Kn.subs(n, 25)), 2))\nKn')
@@ -241,5 +218,5 @@ t('''**Koch-Schneeflocke:** Der Umfang wächst mit jedem Schritt um den Faktor 4
 (3 · (4/3)ⁿ für n → ∞) und den Flächeninhalt aus.''',
   body='display(limit(3 * Rational(4, 3)**n, n, oo))\nsimplify(sqrt(3) / 4 * (1 + summation(3 * 4**(k - 1) / 9**k, (k, 1, oo))))')
 
-generate('sympy_folgen_reihen', 'Folgen und Reihen: Rekursion, Konvergenz, Reihen, Taylorpolynome', INTRO,
+generate('sympy_folgen_reihen', 'Folgen und Reihen: Rekursion, Konvergenz, Reihen', INTRO,
          sprache='sympy', ausfuehren=sympy_ausfuehrung(SETUP))
