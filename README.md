@@ -8,6 +8,7 @@ passend zum Bildungsplan Mathematik des Gymnasiums in Baden-Württemberg. Die No
 |---|---|
 | Zahlen exakt: Brüche, Primzahlen, Potenzen und Wurzeln | [sympy_zahlen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_zahlen.ipynb) |
 | Terme: Einsetzen, Ausmultiplizieren, Faktorisieren, Formeln umstellen | [sympy_terme.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_terme.ipynb) |
+| Gleichungen, Gleichungssysteme und Ungleichungen | [sympy_gleichungen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_gleichungen.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
