@@ -45,6 +45,7 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 | Thema | Notebook öffnen |
 |---|---|
 | Kubische Gleichungen, komplexe Zahlen und algebraische Kurven | [sympy_dmw_gleichungen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_gleichungen.ipynb) |
+| Bogenlänge und Krümmung | [sympy_dmw_kruemmung.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_kruemmung.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
