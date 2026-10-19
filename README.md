@@ -10,6 +10,7 @@ passend zum Bildungsplan Mathematik des Gymnasiums in Baden-Württemberg. Die No
 | Terme: Einsetzen, Ausmultiplizieren, Faktorisieren, Formeln umstellen | [sympy_terme.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_terme.ipynb) |
 | Gleichungen, Gleichungssysteme und Ungleichungen | [sympy_gleichungen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_gleichungen.ipynb) |
 | Funktionen: Graphen, Nullstellen, Scheitel, Wachstum, Sinus | [sympy_funktionen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_funktionen.ipynb) |
+| Ableitungen: Änderungsrate, Tangente, Extrem- und Wendepunkte | [sympy_ableitungen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_ableitungen.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
