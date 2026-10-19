@@ -40,6 +40,12 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 | Komplexe Zahlen: Rechnen, Zahlenebene, Polarform, Einheitswurzeln | [sympy_komplexe_zahlen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_komplexe_zahlen.ipynb) |
 | Integrationstechniken: partielle Integration, Substitution, Partialbrüche | [sympy_integrationstechniken.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_integrationstechniken.ipynb) |
 
+### Wahlfach Digitale Mathematische Werkzeuge
+
+| Thema | Notebook öffnen |
+|---|---|
+| Kubische Gleichungen, komplexe Zahlen und algebraische Kurven | [sympy_dmw_gleichungen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_dmw_gleichungen.ipynb) |
+
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
 Python-Grundlagen (Listen, Funktionen, numpy, matplotlib, ...): [Python-Übungen](https://ktheu.github.io/python-uebungen/)

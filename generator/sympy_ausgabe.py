@@ -12,6 +12,7 @@ Dieses Modul läuft auch in Pyodide (pyodide_check), es darf deshalb nur die Sta
 import ast
 import contextlib
 import io
+import sys
 import warnings
 
 # sympy 1.14 ruft in mpmath 1.4.1 (beide wie in Pyodide 314.0.6) die veraltete Funktion bitcount auf.
@@ -54,7 +55,8 @@ def ausfuehren(code, namensraum):
     Endet der Code mit ';', wird der Wert des letzten Ausdrucks nicht ausgegeben (wie in Jupyter)."""
     teile = []
     plt = None
-    if 'plot' in code or 'matplotlib' in code or 'plt.' in code:
+    # auch wenn eine Funktion aus der Setup-Zelle zeichnet (z. B. kurve()): dann ist pyplot schon geladen
+    if 'plot' in code or 'matplotlib' in code or 'plt.' in code or 'matplotlib.pyplot' in sys.modules:
         import matplotlib
         matplotlib.use('Agg')
         import matplotlib.pyplot as plt
