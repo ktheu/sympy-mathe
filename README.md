@@ -23,6 +23,7 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 | Thema | Notebook öffnen |
 |---|---|
 | Ableitungsregeln: e-Funktion, Produkt-, Ketten- und Quotientenregel | [sympy_ableitungsregeln.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_ableitungsregeln.ipynb) |
+| Funktionsanalyse: Kurvendiskussion, Extremwertprobleme, Steckbriefe, Scharen | [sympy_funktionsanalyse.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_funktionsanalyse.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
