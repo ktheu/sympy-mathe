@@ -31,6 +31,12 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 | Hypothesentests: Ablehnungsbereich, ein- und zweiseitig, Fehler 1. und 2. Art | [sympy_hypothesentest.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_hypothesentest.ipynb) |
 | Normalverteilung: Glockenkurve, Wahrscheinlichkeiten, Näherung, Dichtefunktion | [sympy_normalverteilung.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_normalverteilung.ipynb) |
 
+### Vertiefungskurs
+
+| Thema | Notebook öffnen |
+|---|---|
+| Logik und Beweise: Aussagenlogik, Beweistechniken, Induktion, Ungleichungen | [sympy_logik_beweise.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_logik_beweise.ipynb) |
+
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
 Python-Grundlagen (Listen, Funktionen, numpy, matplotlib, ...): [Python-Übungen](https://ktheu.github.io/python-uebungen/)
