@@ -183,6 +183,8 @@ def task_md(it):
         text += it['text']
         if it['kind'] == 'normal' and aktuelle_sprache != 'python':
             text += '\n\n**Erwartete Ausgabe:**\n\n' + it['out'].rstrip()
+            for k in range(len(it['bilder'])):  # Diagramme (z. B. sympy.plot) als Anhang
+                text += f'\n\n![Erwartete Ausgabe](attachment:{bild_name(it, k + 1)})'
         elif it['kind'] == 'normal':
             text += '\n\n**Erwartete Ausgabe:**'
             if it['out'].strip() or not it['bilder']:

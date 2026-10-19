@@ -33,7 +33,7 @@ for z in zellen:
         namensraum = {}
         with contextlib.redirect_stdout(io.StringIO()):
             exec(sympy_info['setup'], namensraum)
-        ausgabe, err = sympy_modul['ausfuehren'](z['code'], namensraum)
+        ausgabe, err, bilder = sympy_modul['ausfuehren'](z['code'], namensraum)
         fehler = type(err).__name__ if err else None
     else:
         buf = io.StringIO()

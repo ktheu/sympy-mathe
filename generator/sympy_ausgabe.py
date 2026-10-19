@@ -49,8 +49,18 @@ def _markdown(teile):
 
 
 def ausfuehren(code, namensraum):
-    """Führt code im namensraum aus. Gibt (markdown, fehler) zurück."""
+    """Führt code im namensraum aus. Gibt (markdown, fehler, bilder) zurück.
+    bilder: PNG-Daten aller matplotlib-Diagramme (z. B. von sympy.plot()), wenn der Code zeichnet.
+    Endet der Code mit ';', wird der Wert des letzten Ausdrucks nicht ausgegeben (wie in Jupyter)."""
     teile = []
+    plt = None
+    if 'plot' in code or 'matplotlib' in code:
+        import matplotlib
+        matplotlib.use('Agg')
+        import matplotlib.pyplot as plt
+        plt.close('all')
+        matplotlib.rcdefaults()
+        plt.show = lambda *args, **kwargs: None  # im Notebook zeigt plt.show() das Bild; hier wird es danach eingesammelt
 
     class Schreiber(io.TextIOBase):
         def write(self, s):
@@ -67,7 +77,7 @@ def ausfuehren(code, namensraum):
     namensraum['display'] = display
     baum = ast.parse(code)
     letzter = None
-    if baum.body and isinstance(baum.body[-1], ast.Expr):
+    if baum.body and isinstance(baum.body[-1], ast.Expr) and not code.rstrip().endswith(';'):
         letzter = ast.Expression(baum.body.pop().value)
     fehler = None
     with contextlib.redirect_stdout(Schreiber()):
@@ -79,7 +89,14 @@ def ausfuehren(code, namensraum):
                     teile.append(('formel', wert))
         except Exception as e:  # noqa
             fehler = e
-    return _markdown(teile), fehler
+    bilder = []
+    if plt is not None:
+        for nr in plt.get_fignums():
+            buf = io.BytesIO()
+            plt.figure(nr).savefig(buf, format='png', dpi=72, bbox_inches='tight', metadata={'Software': None})
+            bilder.append(buf.getvalue())
+        plt.close('all')
+    return _markdown(teile), fehler, bilder
 
 
 def sympy_ausfuehrung(setup_code):
@@ -89,8 +106,7 @@ def sympy_ausfuehrung(setup_code):
         if code != setup_code:
             with contextlib.redirect_stdout(io.StringIO()):
                 exec(setup_code, namensraum)
-        md, fehler = ausfuehren(code, namensraum)
-        return md, fehler, []
+        return ausfuehren(code, namensraum)
 
     ausf.pyodide = {'setup': setup_code}  # für pyodide_check: dieselbe Ausführung in Pyodide wiederholen
     return ausf
