@@ -37,6 +37,7 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 |---|---|
 | Logik und Beweise: Aussagenlogik, Beweistechniken, Induktion, Ungleichungen | [sympy_logik_beweise.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_logik_beweise.ipynb) |
 | Folgen und Reihen: Rekursion, Konvergenz, Reihen, Taylorpolynome | [sympy_folgen_reihen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_folgen_reihen.ipynb) |
+| Komplexe Zahlen: Rechnen, Zahlenebene, Polarform, Einheitswurzeln | [sympy_komplexe_zahlen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_komplexe_zahlen.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
