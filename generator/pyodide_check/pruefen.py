@@ -43,19 +43,20 @@ def zellen(generator, ordner):
         sys.exit(f'{generator}: Der Generator hat nichts geschrieben (PROBLEMS > 0?). Erst lokal fehlerfrei machen.')
 
     items = []
+    ausf = nbgen.ausfuehrung or nbgen.run_mit_bildern  # z. B. sympy-Ausführung (Formeln als erwartete Ausgabe)
     alt_dir = os.getcwd()
     tmp = tempfile.mkdtemp()
     os.chdir(tmp)  # wie in nbgen.check(): Setup und Zellen laufen in einem temporären Ordner
     try:
         if nbgen.setup_cell:
-            out, err, bilder = nbgen.run_mit_bildern(nbgen.setup_cell['code'])
+            out, err, bilder = ausf(nbgen.setup_cell['code'])
             items.append({'nr': 'Setup', 'art': 'setup', 'code': nbgen.setup_cell['code'], 'out': out, 'fehler': None})
         for s_i, s in enumerate(nbgen.sections, 1):
             b = 0
             for it in s['items']:
                 if it['type'] == 'expl':
                     b += 1
-                    out, err, bilder = nbgen.run_mit_bildern(it['code'])
+                    out, err, bilder = ausf(it['code'])
                     items.append({'nr': f'{s_i}. Beispiel {b}', 'art': 'beispiel', 'code': it['code'], 'out': out,
                                   'fehler': None})
                 else:
@@ -64,7 +65,13 @@ def zellen(generator, ordner):
     finally:
         os.chdir(alt_dir)
         shutil.rmtree(tmp)
-    return items
+    daten = {'zellen': items}
+    extra = getattr(nbgen.ausfuehrung, 'pyodide', None)
+    if extra is not None:  # sympy: dieselbe Ausführung (sympy_ausgabe.py) in Pyodide wiederholen
+        quelle = os.path.join(os.path.dirname(os.path.abspath(generator)), 'sympy_ausgabe.py')
+        with open(quelle, encoding='utf-8') as f:
+            daten['sympy'] = {'setup': extra['setup'], 'quelle': f.read()}
+    return daten
 
 
 def node_programm():
@@ -88,10 +95,10 @@ def main():
     for generator in generatoren:
         ordner = tempfile.mkdtemp()
         try:
-            items = zellen(generator, ordner)
+            daten = zellen(generator, ordner)
             datei = os.path.join(ordner, 'zellen.json')
             with open(datei, 'w', encoding='utf-8') as f:
-                json.dump(items, f, ensure_ascii=False)
+                json.dump(daten, f, ensure_ascii=False)
             print(f'=== {os.path.basename(generator)}', flush=True)
             r = subprocess.run([node, os.path.join(HIER, 'check.mjs'), datei],
                                capture_output=True, text=True, encoding='utf-8')

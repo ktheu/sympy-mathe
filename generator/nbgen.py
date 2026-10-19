@@ -34,6 +34,13 @@ SPRACHEN = {
                           'pygments_lexer': 'ipython3', 'version': '3.12.8'},
         'platzhalter': '# your code',
         'codeblock': 'python'},
+    'sympy': {  # Python-Kernel; erwartete Ausgaben als Formeln (sympy_ausgabe.py)
+        'kernelspec': {'display_name': 'Python 3 (ipykernel)', 'language': 'python', 'name': 'python3'},
+        'language_info': {'codemirror_mode': {'name': 'ipython', 'version': 3}, 'file_extension': '.py',
+                          'mimetype': 'text/x-python', 'name': 'python', 'nbconvert_exporter': 'python',
+                          'pygments_lexer': 'ipython3', 'version': '3.12.8'},
+        'platzhalter': '# your code',
+        'codeblock': 'python'},
     'sqlite': {
         'kernelspec': {'display_name': 'SQLite (xsqlite)', 'language': 'sqlite', 'name': 'xsqlite'},
         'language_info': {'name': 'sqlite'},
