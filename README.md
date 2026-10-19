@@ -26,6 +26,7 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 | Funktionsanalyse: Kurvendiskussion, Extremwertprobleme, Steckbriefe, Scharen | [sympy_funktionsanalyse.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_funktionsanalyse.ipynb) |
 | Integralrechnung: Stammfunktionen, Flächen, Rekonstruktion, Rotationskörper | [sympy_integrale.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_integrale.ipynb) |
 | Wachstum: exponentiell, beschränkt, logistisch, Differentialgleichungen | [sympy_wachstum.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_wachstum.ipynb) |
+| Ebenen: LGS, Skalarprodukt, Ebenengleichungen, Lagebeziehungen | [sympy_ebenen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_ebenen.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
