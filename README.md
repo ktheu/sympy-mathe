@@ -36,6 +36,7 @@ Inhalte, die nur im Leistungsfach vorkommen, sind in den Notebooks markiert.
 | Thema | Notebook öffnen |
 |---|---|
 | Logik und Beweise: Aussagenlogik, Beweistechniken, Induktion, Ungleichungen | [sympy_logik_beweise.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_logik_beweise.ipynb) |
+| Folgen und Reihen: Rekursion, Konvergenz, Reihen, Taylorpolynome | [sympy_folgen_reihen.ipynb](https://ktheu.github.io/sympy-mathe/notebooks/index.html?path=sympy_folgen_reihen.ipynb) |
 
 Alle Notebooks auf einmal: [JupyterLab](https://ktheu.github.io/sympy-mathe/lab/index.html)
 
